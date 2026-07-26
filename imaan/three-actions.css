@@ -1,0 +1,27 @@
+body[data-source="upcoming"] .cardActions{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+}
+body[data-source="upcoming"] .cardActions a{
+  min-width:0;
+  padding:11px 8px;
+  white-space:nowrap;
+}
+body[data-source="upcoming"] .cardActions .details{
+  background:#fff;
+  color:var(--ink);
+  border:1px solid var(--line);
+}
+body[data-source="upcoming"] .cardActions .details:hover{
+  background:#fbf6fa;
+}
+@media(max-width:420px){
+  body[data-source="upcoming"] .cardActions{
+    gap:6px;
+  }
+  body[data-source="upcoming"] .cardActions a{
+    padding:10px 4px;
+    font-size:.75rem;
+  }
+}
