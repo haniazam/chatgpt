@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ef7198">
+  <meta name="robots" content="noindex">
+  <title>Single-row event card options · Imaan in Milan</title>
+  <style>
+    :root{
+      --ink:#302732;
+      --muted:#746b75;
+      --line:#eadfe7;
+      --rose:#ef7198;
+      --peach:#ffb284;
+      --lilac:#b9a4f6;
+      --cream:#fff7f2;
+      --shadow:0 18px 50px rgba(83,54,73,.13);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 0 0,#ffe2d2 0,transparent 30rem),
+        radial-gradient(circle at 100% 5%,#e7ddff 0,transparent 30rem),
+        #fbf9fc;
+    }
+    a{color:inherit}
+    .wrap{width:min(1120px,calc(100% - 28px));margin:auto;padding:20px 0 64px}
+    .intro{
+      padding:30px;
+      border-radius:30px;
+      color:white;
+      background:linear-gradient(135deg,#ed7198,#ffad80 52%,#b8a4f5);
+      box-shadow:var(--shadow);
+      margin-bottom:24px;
+      position:relative;
+      overflow:hidden;
+    }
+    .intro:after{content:"";position:absolute;width:250px;height:250px;border-radius:50%;right:-70px;bottom:-120px;background:#ffffff25}
+    .kicker{font-size:.73rem;letter-spacing:.15em;text-transform:uppercase;font-weight:900;opacity:.9}
+    h1{font-size:clamp(2rem,6vw,4rem);line-height:.96;margin:.5rem 0 .85rem;max-width:850px}
+    .intro p{margin:0;line-height:1.55;max-width:820px}
+    .topActions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:1}
+    .topActions a{padding:10px 14px;border-radius:999px;text-decoration:none;font-size:.8rem;font-weight:900;background:#ffffff20;border:1px solid #ffffff55}
+    .notice{display:inline-flex;margin-top:17px;padding:9px 12px;border-radius:999px;background:#ffffff20;border:1px solid #ffffff55;font-size:.78rem;font-weight:900;position:relative;z-index:1}
+    .option{margin:32px 0 42px}
+    .optionHead{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:11px}
+    .optionHead h2{margin:0;font-size:1.34rem}
+    .optionHead p{margin:4px 0 0;color:var(--muted);font-size:.9rem;line-height:1.45}
+    .label{flex:0 0 auto;padding:7px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.7rem;font-weight:950;color:#8b5570}
+    .event{
+      overflow:hidden;
+      border-radius:28px;
+      background:#fffffff2;
+      border:1px solid #fff;
+      box-shadow:0 14px 40px rgba(71,44,60,.12);
+    }
+    .image{
+      min-height:300px;
+      position:relative;
+      background:
+        linear-gradient(135deg,rgba(62,32,98,.5),rgba(239,88,137,.28)),
+        url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1500&q=84') center/cover;
+    }
+    .image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(26,17,29,.58) 100%)}
+    .heart{position:absolute;right:16px;top:16px;z-index:3;width:44px;height:44px;border:0;border-radius:50%;background:#fffffff2;color:#e93672;font-size:1.28rem}
+    .content{padding:25px;display:flex;flex-direction:column;gap:12px;min-width:0}
+    .dateHeader{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:14px 16px;border-radius:16px;background:linear-gradient(90deg,#ffe4ed,#fff1e7);border:1px solid #f2d1dc;
+    }
+    .dateLeft{display:flex;align-items:center;gap:11px;min-width:0}
+    .dateIcon{width:42px;height:42px;flex:0 0 42px;border-radius:13px;background:#fff;display:grid;place-items:center;box-shadow:0 6px 18px #73394f18}
+    .dateCopy small{display:block;color:#9c4364;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;font-weight:950}
+    .dateCopy strong{display:block;margin-top:3px;font-size:1.08rem;line-height:1.2}
+    .time{font-size:1.02rem;font-weight:950;color:#5d3a4c;white-space:nowrap}
+    .tags{display:flex;gap:7px;flex-wrap:wrap}
+    .tag{font-size:.7rem;font-weight:900;padding:7px 9px;border-radius:999px;background:#f4eef4;color:#6c596b}
+    .tag.hot{background:#ffe1e7;color:#a62a53}
+    .content h3{font-size:1.62rem;line-height:1.12;margin:0}
+    .meta{display:grid;gap:8px;color:var(--muted);font-size:.94rem}
+    .note{padding:13px 14px;border-radius:15px;background:var(--cream);line-height:1.48;font-size:.92rem}
+    .buttons{display:flex;gap:9px;margin-top:auto}
+    .buttons a{flex:1;text-align:center;text-decoration:none;padding:12px 14px;border-radius:14px;font-weight:850;font-size:.86rem}
+    .primary{background:var(--ink);color:white}.secondary{background:#f1ebf2;color:var(--ink)}
+
+    /* A — Balanced split */
+    .layoutA{display:grid;grid-template-columns:minmax(320px,38%) 1fr;min-height:330px}
+    .layoutA .image{min-height:330px}
+
+    /* B — Image dominant */
+    .layoutB{display:grid;grid-template-columns:minmax(430px,48%) 1fr;min-height:360px}
+    .layoutB .image{min-height:360px}
+    .layoutB .content{padding:27px}
+
+    /* C — Image on right */
+    .layoutC{display:grid;grid-template-columns:1fr minmax(340px,40%);min-height:330px}
+    .layoutC .content{order:1}.layoutC .image{order:2;min-height:330px}
+
+    /* D — Date rail + thumbnail */
+    .layoutD{display:grid;grid-template-columns:138px minmax(260px,30%) 1fr;min-height:310px}
+    .dateRail{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;background:linear-gradient(180deg,#ef7198,#ffad80);color:white}
+    .dateRail .month{font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;font-weight:950}
+    .dateRail .day{font-size:4.5rem;line-height:.92;font-weight:950;margin:8px 0 4px}
+    .dateRail .weekday{font-size:.86rem;font-weight:900}
+    .dateRail .railTime{margin-top:18px;padding-top:14px;border-top:1px solid #ffffff60;font-size:.98rem;font-weight:950}
+    .layoutD .image{min-height:310px}
+    .layoutD .content{padding:23px}
+    .layoutD .dateHeader{display:none}
+
+    /* E — Cinematic stack */
+    .layoutE{display:grid;grid-template-columns:1fr}
+    .layoutE .image{min-height:255px}
+    .layoutE .content{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.8fr);column-gap:24px;row-gap:12px;padding:24px 26px 27px}
+    .layoutE .dateHeader{grid-column:1/-1}
+    .layoutE .tags,.layoutE h3,.layoutE .meta{grid-column:1}
+    .layoutE .note,.layoutE .buttons{grid-column:2}
+    .layoutE .note{grid-row:2/5}
+    .layoutE .buttons{align-self:end}
+
+    /* F — Compact premium list */
+    .layoutF{display:grid;grid-template-columns:220px 1fr;min-height:260px}
+    .layoutF .image{min-height:260px}
+    .layoutF .content{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.75fr);column-gap:20px;row-gap:11px;padding:22px 24px}
+    .layoutF .dateHeader{grid-column:1/-1;padding:12px 14px}
+    .layoutF .tags,.layoutF h3,.layoutF .meta{grid-column:1}
+    .layoutF .note,.layoutF .buttons{grid-column:2}
+    .layoutF .note{grid-row:2/5}
+    .layoutF .buttons{align-self:end}
+    .layoutF .content h3{font-size:1.48rem}
+
+    /* G — Floating content panel */
+    .layoutG{display:grid;grid-template-columns:minmax(390px,44%) 1fr;min-height:350px;overflow:visible;background:transparent;border:0;box-shadow:none}
+    .layoutG .image{min-height:350px;border-radius:28px;box-shadow:0 14px 40px rgba(71,44,60,.14);overflow:hidden}
+    .layoutG .content{margin:28px 0 28px -34px;z-index:3;border-radius:24px;background:#fffffff6;border:1px solid #fff;box-shadow:0 18px 45px rgba(71,44,60,.15);padding:27px}
+
+    .footer{color:var(--muted);font-size:.82rem;line-height:1.55;margin-top:24px}
+    @media(max-width:840px){
+      .optionHead{align-items:start;flex-direction:column;gap:8px}
+      .layoutA,.layoutB,.layoutC,.layoutD,.layoutF,.layoutG{grid-template-columns:1fr}
+      .layoutC .content{order:2}.layoutC .image{order:1}
+      .layoutD .dateRail{min-height:165px}
+      .layoutD .dateRail .day{font-size:4rem}
+      .layoutG{overflow:hidden;background:#fffffff2;border:1px solid #fff;box-shadow:0 14px 40px rgba(71,44,60,.12)}
+      .layoutG .image{border-radius:0;box-shadow:none;min-height:235px}
+      .layoutG .content{margin:0;border-radius:0;box-shadow:none;border:0}
+      .layoutE .content,.layoutF .content{grid-template-columns:1fr}
+      .layoutE .dateHeader,.layoutE .tags,.layoutE h3,.layoutE .meta,.layoutE .note,.layoutE .buttons,
+      .layoutF .dateHeader,.layoutF .tags,.layoutF h3,.layoutF .meta,.layoutF .note,.layoutF .buttons{grid-column:1;grid-row:auto}
+      .layoutA .image,.layoutB .image,.layoutC .image,.layoutD .image,.layoutF .image{min-height:225px}
+    }
+    @media(max-width:560px){
+      .intro{padding:24px 21px}
+      .content,.layoutB .content,.layoutD .content,.layoutG .content{padding:21px}
+      .layoutE .content,.layoutF .content{padding:21px}
+      .dateHeader{align-items:flex-start}
+      .time{font-size:.9rem}
+      .buttons{flex-direction:column}
+      .image{min-height:210px!important}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="intro">
+      <div class="kicker">Private design preview · main page unchanged</div>
+      <h1>More one-event-per-row options</h1>
+      <p>All seven versions use the clean date header you preferred. The difference is the overall balance between the image, date, event details and buttons.</p>
+      <div class="topActions"><a href="index.html">View current live page</a><a href="date-options.html">Previous date mockups</a></div>
+      <div class="notice">✨ Same event in every mockup for a fair comparison</div>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option A · Balanced split</h2><p>A calm 38/62 image-to-content ratio. Closest to the current page, but with more breathing room.</p></div><span class="label">BALANCED</span></div>
+      <article class="event layoutA">
+        <div class="image"><button class="heart">♡</button></div>
+        <div class="content">
+          <div class="dateHeader"><div class="dateLeft"><span class="dateIcon">📅</span><span class="dateCopy"><small>Date</small><strong>Tuesday 18 August</strong></span></div><span class="time">21:00</span></div>
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option B · Image dominant</h2><p>A larger image gives each event more personality and makes the page feel more like a gift or travel magazine.</p></div><span class="label">MOST VISUAL</span></div>
+      <article class="event layoutB">
+        <div class="image"><button class="heart">♡</button></div>
+        <div class="content">
+          <div class="dateHeader"><div class="dateLeft"><span class="dateIcon">📅</span><span class="dateCopy"><small>Date</small><strong>Tuesday 18 August</strong></span></div><span class="time">21:00</span></div>
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option C · Editorial image on the right</h2><p>The details lead, then the photo. This reads more naturally when scanning dates and names down the page.</p></div><span class="label">BEST FOR SCANNING</span></div>
+      <article class="event layoutC">
+        <div class="image"><button class="heart">♡</button></div>
+        <div class="content">
+          <div class="dateHeader"><div class="dateLeft"><span class="dateIcon">📅</span><span class="dateCopy"><small>Date</small><strong>Tuesday 18 August</strong></span></div><span class="time">21:00</span></div>
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option D · Date rail + image + details</h2><p>The clearest timeline treatment. The date is impossible to miss, while the image and content still have distinct zones.</p></div><span class="label">MOST DATE-LED</span></div>
+      <article class="event layoutD">
+        <div class="dateRail"><span class="month">August</span><span class="day">18</span><span class="weekday">Tuesday</span><span class="railTime">21:00</span></div>
+        <div class="image"><button class="heart">♡</button></div>
+        <div class="content">
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option E · Cinematic banner + two-column details</h2><p>A full-width photo creates a dramatic pause, then the practical information sits neatly below it.</p></div><span class="label">MOST LUXE</span></div>
+      <article class="event layoutE">
+        <div class="image"><button class="heart">♡</button></div>
+        <div class="content">
+          <div class="dateHeader"><div class="dateLeft"><span class="dateIcon">📅</span><span class="dateCopy"><small>Date</small><strong>Tuesday 18 August</strong></span></div><span class="time">21:00</span></div>
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option F · Compact premium list</h2><p>Smaller image, denser information and less scrolling. Best when there are fifteen events to compare.</p></div><span class="label">LEAST SCROLLING</span></div>
+      <article class="event layoutF">
+        <div class="image"><button class="heart">♡</button></div>
+        <div class="content">
+          <div class="dateHeader"><div class="dateLeft"><span class="dateIcon">📅</span><span class="dateCopy"><small>Date</small><strong>Tuesday 18 August</strong></span></div><span class="time">21:00</span></div>
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option G · Floating editorial panel</h2><p>The content overlaps the image slightly, making the guide feel more custom-designed and less like a standard events site.</p></div><span class="label">MOST DISTINCTIVE</span></div>
+      <article class="event layoutG">
+        <div class="image"><button class="heart">♡</button></div>
+        <div class="content">
+          <div class="dateHeader"><div class="dateLeft"><span class="dateIcon">📅</span><span class="dateCopy"><small>Date</small><strong>Tuesday 18 August</strong></span></div><span class="time">21:00</span></div>
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">This is a private comparison page. The live August guide has not been changed.</footer>
+  </main>
+</body>
+</html>
