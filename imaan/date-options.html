@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ef7198">
+  <meta name="robots" content="noindex">
+  <title>Date & time design options · Imaan in Milan</title>
+  <style>
+    :root{
+      --ink:#302732;
+      --muted:#746b75;
+      --line:#eadfe7;
+      --rose:#ef7198;
+      --peach:#ffb284;
+      --lilac:#b9a4f6;
+      --shadow:0 18px 50px rgba(83,54,73,.13);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 0 0,#ffe2d2 0,transparent 30rem),
+        radial-gradient(circle at 100% 5%,#e7ddff 0,transparent 30rem),
+        #fbf9fc;
+    }
+    .wrap{width:min(1100px,calc(100% - 28px));margin:auto;padding:20px 0 60px}
+    .intro{
+      padding:28px;
+      border-radius:28px;
+      color:white;
+      background:linear-gradient(135deg,#ed7198,#ffad80 52%,#b8a4f5);
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+    .kicker{font-size:.73rem;letter-spacing:.15em;text-transform:uppercase;font-weight:900;opacity:.9}
+    h1{font-size:clamp(2rem,6vw,4rem);line-height:.95;margin:.5rem 0 .85rem;max-width:800px}
+    .intro p{margin:0;line-height:1.55;max-width:780px}
+    .notice{
+      margin-top:18px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 13px;
+      border-radius:999px;
+      background:#ffffff20;
+      border:1px solid #ffffff55;
+      font-weight:800;
+      font-size:.82rem;
+    }
+    .option{margin:28px 0 34px}
+    .optionHead{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:10px}
+    .optionHead h2{margin:0;font-size:1.3rem}
+    .optionHead p{margin:3px 0 0;color:var(--muted);font-size:.9rem}
+    .badge{flex:0 0 auto;padding:7px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.72rem;font-weight:900;color:#8b5570}
+    .event{
+      display:grid;
+      grid-template-columns:minmax(300px,40%) 1fr;
+      min-height:300px;
+      overflow:hidden;
+      border-radius:28px;
+      background:#fffffff2;
+      border:1px solid #fff;
+      box-shadow:0 14px 38px rgba(71,44,60,.12);
+    }
+    .banner{
+      min-height:300px;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg,rgba(62,32,98,.55),rgba(239,88,137,.38)),
+        url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1400&q=84') center/cover;
+    }
+    .banner:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 28%,rgba(26,17,29,.68) 100%)}
+    .heart{position:absolute;right:16px;top:16px;z-index:5;width:44px;height:44px;border:0;border-radius:50%;background:#fffffff2;font-size:1.3rem;color:#e93672}
+    .content{padding:26px;display:flex;flex-direction:column;gap:13px}
+    .tags{display:flex;flex-wrap:wrap;gap:7px}
+    .tag{font-size:.7rem;font-weight:900;padding:7px 9px;border-radius:999px;background:#f4eef4;color:#6c596b}
+    .tag.hot{background:#ffe1e7;color:#a62a53}
+    .content h3{font-size:1.62rem;margin:0;line-height:1.12}
+    .meta{display:grid;gap:8px;color:var(--muted);font-size:.94rem}
+    .note{padding:13px 14px;border-radius:15px;background:#fff7f2;line-height:1.48;font-size:.92rem}
+    .buttons{display:flex;gap:9px;margin-top:auto}
+    .buttons a{flex:1;text-align:center;text-decoration:none;padding:12px 14px;border-radius:14px;font-weight:850;font-size:.86rem}
+    .primary{background:var(--ink);color:white}.secondary{background:#f1ebf2;color:var(--ink)}
+
+    /* Option 1: calendar badge */
+    .calendarBadge{position:absolute;z-index:4;left:18px;top:18px;width:90px;border-radius:18px;overflow:hidden;background:white;box-shadow:0 14px 30px rgba(0,0,0,.18);text-align:center}
+    .calendarBadge .month{display:block;padding:8px 5px;background:var(--rose);color:white;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:950}
+    .calendarBadge .day{display:block;padding:8px 5px 1px;font-size:2.15rem;line-height:1;font-weight:950;color:#3f2a36}
+    .calendarBadge .time{display:block;padding:4px 5px 10px;font-size:.76rem;font-weight:900;color:#856f7d}
+
+    /* Option 2: glass ribbon */
+    .glassRibbon{position:absolute;z-index:4;left:0;right:0;bottom:0;padding:18px 22px;background:rgba(31,22,35,.62);backdrop-filter:blur(12px);color:white;border-top:1px solid rgba(255,255,255,.25);display:flex;align-items:end;justify-content:space-between;gap:18px}
+    .glassRibbon strong{display:block;font-size:1.35rem;line-height:1.05}.glassRibbon span{font-size:.82rem;font-weight:800;opacity:.88}
+    .glassRibbon .clock{font-size:1.05rem;white-space:nowrap;font-weight:950}
+
+    /* Option 3: editorial overlay */
+    .editorialDate{position:absolute;z-index:4;left:22px;right:80px;bottom:20px;color:white;text-shadow:0 5px 20px rgba(0,0,0,.42)}
+    .editorialDate .small{display:block;font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;font-weight:900;opacity:.85}
+    .editorialDate .big{display:block;margin-top:5px;font-size:clamp(2rem,5vw,3.6rem);line-height:.9;font-weight:950}
+    .editorialDate .time{display:block;margin-top:8px;font-size:1rem;font-weight:850}
+
+    /* Option 4: pill */
+    .datePill{position:absolute;z-index:4;left:18px;bottom:18px;display:flex;align-items:center;gap:10px;padding:12px 15px;border-radius:999px;background:#fffffff0;box-shadow:0 12px 28px rgba(0,0,0,.18);color:#3b2833}
+    .datePill .icon{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ffe4ed,#f0e8ff)}
+    .datePill strong{display:block;font-size:.96rem}.datePill small{display:block;color:#806d79;font-size:.73rem;margin-top:2px;font-weight:800}
+
+    /* Option 5: left date rail */
+    .railEvent{grid-template-columns:150px minmax(260px,32%) 1fr}
+    .dateRail{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,#ef7198,#ffad80);color:white;padding:24px}
+    .dateRail .month{font-size:.75rem;text-transform:uppercase;letter-spacing:.17em;font-weight:950}
+    .dateRail .day{font-size:4.8rem;line-height:.92;font-weight:950;margin:8px 0 3px}
+    .dateRail .weekday{font-size:.9rem;font-weight:900}.dateRail .time{margin-top:18px;padding-top:14px;border-top:1px solid #ffffff55;font-size:1rem;font-weight:950}
+
+    /* Option 6: content header */
+    .contentDate{margin:-26px -26px 2px;padding:18px 26px;background:linear-gradient(90deg,#ffe3ed,#fff1e7);border-bottom:1px solid #f2d1dc;display:flex;align-items:center;justify-content:space-between;gap:15px}
+    .contentDate .left{display:flex;align-items:center;gap:12px}.contentDate .icon{width:44px;height:44px;border-radius:14px;background:white;display:grid;place-items:center;box-shadow:0 6px 18px #73394f18;font-size:1.2rem}
+    .contentDate small{display:block;color:#9c4364;font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;font-weight:950}.contentDate strong{display:block;margin-top:3px;font-size:1.12rem}.contentDate .time{font-weight:950;font-size:1rem;color:#5d3a4c;white-space:nowrap}
+
+    .footer{color:var(--muted);font-size:.82rem;line-height:1.5;margin-top:20px}
+    @media(max-width:760px){
+      .optionHead{align-items:start;flex-direction:column;gap:8px}
+      .event,.railEvent{grid-template-columns:1fr}
+      .banner{min-height:220px}
+      .dateRail{min-height:170px}
+      .dateRail .day{font-size:4rem}
+      .content{padding:21px}
+      .contentDate{margin:-21px -21px 2px;padding:16px 21px}
+      .glassRibbon{padding:15px 17px}.glassRibbon strong{font-size:1.12rem}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="intro">
+      <div class="kicker">Private design preview · main page unchanged</div>
+      <h1>Choose how the date should look</h1>
+      <p>Each mockup uses the same event and a full-width, one-event-per-row layout so the only real difference is the date-and-time treatment.</p>
+      <div class="notice">✨ Options 1–4 put the date directly on the image banner</div>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option 1 · Calendar badge</h2><p>Compact, instantly scannable and clearly separate from the photo.</p></div><span class="badge">ON THE BANNER</span></div>
+      <article class="event">
+        <div class="banner">
+          <button class="heart">♡</button>
+          <div class="calendarBadge"><span class="month">August</span><span class="day">18</span><span class="time">9:00 PM</span></div>
+        </div>
+        <div class="content">
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option 2 · Bottom glass ribbon</h2><p>The date stays attached to the image without covering the centre of the photo.</p></div><span class="badge">ON THE BANNER</span></div>
+      <article class="event">
+        <div class="banner">
+          <button class="heart">♡</button>
+          <div class="glassRibbon"><div><span>Tuesday</span><strong>18 August</strong></div><div class="clock">21:00</div></div>
+        </div>
+        <div class="content">
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option 3 · Editorial date overlay</h2><p>The strongest visual treatment: more like a magazine or concert poster.</p></div><span class="badge">ON THE BANNER</span></div>
+      <article class="event">
+        <div class="banner">
+          <button class="heart">♡</button>
+          <div class="editorialDate"><span class="small">Tuesday night</span><span class="big">18 AUG</span><span class="time">Doors 19:30 · Show 21:00</span></div>
+        </div>
+        <div class="content">
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option 4 · Floating date pill</h2><p>Softer and more gift-like, while still putting the date on the image.</p></div><span class="badge">ON THE BANNER</span></div>
+      <article class="event">
+        <div class="banner">
+          <button class="heart">♡</button>
+          <div class="datePill"><span class="icon">📅</span><span><strong>Tuesday, 18 August</strong><small>21:00 · doors from 19:30</small></span></div>
+        </div>
+        <div class="content">
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option 5 · Left-side date rail</h2><p>Not on the banner. Very easy to scan down a long list of one-row events.</p></div><span class="badge">ONE EVENT PER ROW</span></div>
+      <article class="event railEvent">
+        <div class="dateRail"><span class="month">August</span><span class="day">18</span><span class="weekday">Tuesday</span><span class="time">21:00</span></div>
+        <div class="banner"><button class="heart">♡</button></div>
+        <div class="content">
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="option">
+      <div class="optionHead"><div><h2>Option 6 · Clean content header</h2><p>Not on the banner. More restrained, with the date leading the written information.</p></div><span class="badge">ONE EVENT PER ROW</span></div>
+      <article class="event">
+        <div class="banner"><button class="heart">♡</button></div>
+        <div class="content">
+          <div class="contentDate"><div class="left"><span class="icon">📅</span><span><small>Tuesday</small><strong>18 August</strong></span></div><span class="time">21:00</span></div>
+          <div class="tags"><span class="tag hot">International artist</span><span class="tag">Electropop + funk</span></div>
+          <h3>Parcels at Kozel Carroponte</h3>
+          <div class="meta"><div>📍 Kozel Carroponte · Sesto San Giovanni</div><div>🗣️ Music-led · no Italian needed</div><div>🎟️ On sale now</div></div>
+          <div class="note"><b>Why I picked it:</b> polished electropop, funk and electronic music that should be genuinely fun live.</div>
+          <div class="buttons"><a class="primary">Tickets</a><a class="secondary">Map</a></div>
+        </div>
+      </article>
+    </section>
+
+    <p class="footer">This is a comparison page only. None of these date treatments—or the one-event-per-row layout—has been applied to Imaan’s main guide yet.</p>
+  </main>
+</body>
+</html>
