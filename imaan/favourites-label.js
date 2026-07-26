@@ -1,0 +1,1 @@
+const favouritesButton=document.querySelector('#saved');if(favouritesButton){favouritesButton.addEventListener('click',()=>{if(favouritesButton.textContent.trim()==='My favourites')favouritesButton.textContent='♡ My favourites';});}
