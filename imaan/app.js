@@ -20,6 +20,7 @@ function splitTiming(rawTiming) {
 function cardHtml(event) {
   const timing = splitTiming(event.m?.[0]);
   const details = (event.m || []).slice(1);
+  const visibleTags = (event.g || []).filter((tag) => !String(tag[0]).toLowerCase().includes("english"));
   const isSaved = savedSet.has(event.i);
   const label = pageType === "ongoing" ? "Availability" : "Date";
 
@@ -38,7 +39,7 @@ function cardHtml(event) {
           </div>
           ${timing.time ? `<span class="dateTime">${timing.time}</span>` : ""}
         </div>
-        <div class="tags">${event.g.map((tag) => `<span class="tag${tag[1] ? " hot" : ""}">${escapeHtml(tag[0])}</span>`).join("")}</div>
+        <div class="tags">${visibleTags.map((tag) => `<span class="tag${tag[1] ? " hot" : ""}">${escapeHtml(tag[0])}</span>`).join("")}</div>
         <h3>${escapeHtml(event.t)}</h3>
         <div class="meta">${details.map((detail) => `<div>${detail}</div>`).join("")}</div>
         <div class="note">${event.n}</div>
