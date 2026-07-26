@@ -10,6 +10,11 @@ const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => (
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
 })[character]);
 
+const tagOverrides = {
+  "candle-flowers-les-amis": { "Women-only": "Girls’ craft night" },
+  "golden-hour-les-amis": { "Women-only": "Girls’ rooftop social" }
+};
+
 function splitTiming(rawTiming) {
   const timing = String(rawTiming || "Check availability").replace(/^📅\s*/, "");
   const parts = timing.split(" · ");
@@ -20,7 +25,9 @@ function splitTiming(rawTiming) {
 function cardHtml(event) {
   const timing = splitTiming(event.m?.[0]);
   const details = (event.m || []).slice(1);
-  const visibleTags = (event.g || []).filter((tag) => !String(tag[0]).toLowerCase().includes("english"));
+  const visibleTags = (event.g || [])
+    .filter((tag) => !String(tag[0]).toLowerCase().includes("english"))
+    .map((tag) => [tagOverrides[event.i]?.[tag[0]] || tag[0], tag[1]]);
   const isSaved = savedSet.has(event.i);
   const label = pageType === "ongoing" ? "Availability" : "Date";
 
