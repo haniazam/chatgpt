@@ -11,8 +11,8 @@ const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => (
 })[character]);
 
 const tagOverrides = {
-  "candle-flowers-les-amis": { "Women-only": "Girls’ craft night" },
-  "golden-hour-les-amis": { "Women-only": "Girls’ rooftop social" }
+  "candle-flowers-les-amis": { "Women-only": "Craft night" },
+  "golden-hour-les-amis": { "Women-only": "Rooftop hang" }
 };
 
 function splitTiming(rawTiming) {
