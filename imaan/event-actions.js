@@ -5,7 +5,7 @@ window.IMAAN_ACTIONS = {
     ["Map", "https://www.google.com/maps/search/?api=1&query=Milan+Italy", "map"]
   ],
   "duemila30-festival": [
-    ["Details", "https://www.duemila30.com/", "details"],
+    ["Details", "https://www.duemila30.com/festival", "details"],
     ["Entry info", "https://www.yesmilano.it/eventi/tutti-gli-eventi/duemila30-festival", "book"],
     ["Map", "https://www.google.com/maps/search/?api=1&query=Duemila30+Festival+Milano", "map"]
   ],
@@ -40,13 +40,13 @@ window.IMAAN_ACTIONS = {
     ["Map", "https://www.google.com/maps/search/?api=1&query=VIU+Terrace+Milan", "map"]
   ],
   "parcels-carroponte": [
-    ["Details", "https://www.kozelcarroponte.net/parcels/", "details"],
+    ["Details", "https://www.kozelcarroponte.net/lista-eventi/parcels/", "details"],
     ["Tickets", "https://www.ticketone.it/event/parcels-kozel-carroponte-21123314/", "book"],
     ["Map", "https://www.google.com/maps/search/?api=1&query=Kozel+Carroponte+Sesto+San+Giovanni", "map"]
   ],
   "geese-unaltrofestival": [
     ["Details", "https://www.livenation.it/en/event/geese-segrate-tickets-edp1651421", "details"],
-    ["Tickets", "https://www.ticketone.it/en/artist/geese/", "book"],
+    ["Tickets", "https://www.ticketone.it/event/geese-circolo-magnolia-21304271/", "book"],
     ["Map", "https://www.google.com/maps/search/?api=1&query=Circolo+Magnolia+Segrate", "map"]
   ],
   "mud-dance-previews": [
@@ -55,7 +55,7 @@ window.IMAAN_ACTIONS = {
     ["Map", "https://www.google.com/maps/search/?api=1&query=Parco+delle+Cave+Milano", "map"]
   ],
   "tyler-the-creator": [
-    ["Details", "https://fieramilanolive.com/", "details"],
+    ["Details", "https://fieramilanolive.com/tyler-the-creator/", "details"],
     ["Tickets", "https://www.ticketone.it/event/tyler-the-creator-fiera-milano-live-20708838/", "book"],
     ["Map", "https://www.google.com/maps/search/?api=1&query=Fiera+Milano+Live+Rho", "map"]
   ],
