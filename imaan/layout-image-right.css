@@ -1,0 +1,8 @@
+body[data-source="upcoming"] .card{grid-template-columns:1fr minmax(230px,28%)}
+body[data-source="upcoming"] .body{grid-column:1;grid-row:1}
+body[data-source="upcoming"] .visual{grid-column:2;grid-row:1;min-height:310px}
+@media(max-width:760px){
+  body[data-source="upcoming"] .card{grid-template-columns:1fr}
+  body[data-source="upcoming"] .visual{grid-column:1;grid-row:1;min-height:220px}
+  body[data-source="upcoming"] .body{grid-column:1;grid-row:2}
+}
