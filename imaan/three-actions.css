@@ -3,10 +3,15 @@ body[data-source="upcoming"] .cardActions{
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:8px;
 }
-body[data-source="upcoming"] .cardActions a{
+body[data-source="upcoming"] .cardActions a,
+body[data-source="upcoming"] .cardActions span{
   min-width:0;
   padding:11px 8px;
   white-space:nowrap;
+  border-radius:14px;
+  font-size:.82rem;
+  font-weight:850;
+  text-align:center;
 }
 body[data-source="upcoming"] .cardActions .details{
   background:#fff;
@@ -16,12 +21,22 @@ body[data-source="upcoming"] .cardActions .details{
 body[data-source="upcoming"] .cardActions .details:hover{
   background:#fbf6fa;
 }
+body[data-source="upcoming"] .cardActions .map{
+  background:#ffe9f0;
+  color:#8d3c5b;
+}
+body[data-source="upcoming"] .cardActions .disabled{
+  opacity:.5;
+  cursor:not-allowed;
+  user-select:none;
+}
 @media(max-width:420px){
   body[data-source="upcoming"] .cardActions{
     gap:6px;
   }
-  body[data-source="upcoming"] .cardActions a{
+  body[data-source="upcoming"] .cardActions a,
+  body[data-source="upcoming"] .cardActions span{
     padding:10px 4px;
-    font-size:.75rem;
+    font-size:.73rem;
   }
 }
