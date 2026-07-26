@@ -19,8 +19,17 @@ const tagOverrides = {
   "mud-dance-previews": { "Close to home": "Neighbourhood gem" }
 };
 
+function formatClockText(value) {
+  return String(value).replace(/\b([01]?\d|2[0-3]):([0-5]\d)\b/g, (_, hoursText, minutes) => {
+    const hours = Number(hoursText);
+    const period = hours >= 12 ? "pm" : "am";
+    const displayHours = hours % 12 || 12;
+    return `${displayHours}:${minutes} ${period}`;
+  });
+}
+
 function splitTiming(rawTiming) {
-  const timing = String(rawTiming || "Check availability").replace(/^📅\s*/, "");
+  const timing = formatClockText(String(rawTiming || "Check availability").replace(/^📅\s*/, ""));
   const parts = timing.split(" · ");
   if (parts.length === 2) return { date: parts[0], time: parts[1] };
   return { date: timing, time: "" };
@@ -37,12 +46,11 @@ function actionHtml(action) {
 
 function cardHtml(event) {
   const timing = splitTiming(event.m?.[0]);
-  const details = (event.m || []).slice(1);
+  const details = (event.m || []).slice(1).map(formatClockText);
   const visibleTags = (event.g || [])
     .filter((tag) => !String(tag[0]).toLowerCase().includes("english"))
     .map((tag) => [tagOverrides[event.i]?.[tag[0]] || tag[0], tag[1]]);
   const isSaved = savedSet.has(event.i);
-  const label = pageType === "ongoing" ? "Availability" : "Date";
 
   return `
     <article class="card" data-id="${escapeHtml(event.i)}" data-c="${escapeHtml(event.c)}">
@@ -55,7 +63,7 @@ function cardHtml(event) {
         <div class="contentDate">
           <div class="dateLeft">
             <span class="dateIcon" aria-hidden="true">${pageType === "ongoing" ? "🗓️" : "📅"}</span>
-            <span class="dateCopy"><small>${label}</small><strong>${timing.date}</strong></span>
+            <span class="dateCopy"><strong>${timing.date}</strong></span>
           </div>
           ${timing.time ? `<span class="dateTime">${timing.time}</span>` : ""}
         </div>
