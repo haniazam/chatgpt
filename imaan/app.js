@@ -12,7 +12,11 @@ const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => (
 
 const tagOverrides = {
   "candle-flowers-les-amis": { "Women-only": "Craft night" },
-  "golden-hour-les-amis": { "Women-only": "Rooftop hang" }
+  "golden-hour-les-amis": { "Women-only": "Rooftop hang" },
+  "street-culture-festival": { "Neighbourhood find": "Neighbourhood gem" },
+  "parcels-carroponte": { "International artist": "Long-awaited return" },
+  "geese-unaltrofestival": { "First Italy show": "Italian debut" },
+  "mud-dance-previews": { "Close to home": "Neighbourhood gem" }
 };
 
 function splitTiming(rawTiming) {
@@ -20,6 +24,15 @@ function splitTiming(rawTiming) {
   const parts = timing.split(" · ");
   if (parts.length === 2) return { date: parts[0], time: parts[1] };
   return { date: timing, time: "" };
+}
+
+function actionHtml(action) {
+  const [label, url, className, disabled = false, explanation = ""] = action;
+  const classes = `btn ${escapeHtml(className || "details")}${disabled || !url ? " disabled" : ""}`;
+  if (disabled || !url) {
+    return `<span class="${classes}" aria-disabled="true" title="${escapeHtml(explanation || "Not available yet")}">${escapeHtml(label)}</span>`;
+  }
+  return `<a class="${classes}" target="_blank" rel="noopener" href="${escapeHtml(url)}">${escapeHtml(label)}</a>`;
 }
 
 function cardHtml(event) {
@@ -50,7 +63,7 @@ function cardHtml(event) {
         <h3>${escapeHtml(event.t)}</h3>
         <div class="meta">${details.map((detail) => `<div>${detail}</div>`).join("")}</div>
         <div class="note">${event.n}</div>
-        <div class="cardActions">${event.a.map((action) => `<a class="btn ${escapeHtml(action[2])}" target="_blank" rel="noopener" href="${escapeHtml(action[1])}">${escapeHtml(action[0])}</a>`).join("")}</div>
+        <div class="cardActions">${(event.a || []).map(actionHtml).join("")}</div>
       </div>
     </article>`;
 }
