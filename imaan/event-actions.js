@@ -75,3 +75,7 @@ window.IMAAN_ACTIONS = {
     ["Map", "https://www.google.com/maps/search/?api=1&query=Le+Scuderie+Milano+Piazzale+dello+Sport+16", "map"]
   ]
 };
+
+(window.IMAAN_UPCOMING || []).forEach((event) => {
+  if (window.IMAAN_ACTIONS[event.i]) event.a = window.IMAAN_ACTIONS[event.i];
+});
