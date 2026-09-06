@@ -1,1 +1,131 @@
-PLACEHOLDER
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4efe6">
+<meta name="description" content="An inventory-aware, recovery-friendly new-flat shopping and setup checklist.">
+<title>New Flat Setup — inventory-aware checklist</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">⌂</span><span>New Flat Setup</span></div>
+    <div class="top-actions">
+      <button class="button" id="shareBtn" type="button">Share</button>
+      <button class="button" id="resetBtn" type="button">Reset checks</button>
+      <a class="button primary" href="#checklist">Open checklist</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="kicker">Inventory-aware · recovery-friendly · refreshed 6 September 2026</p>
+      <h1>Set up the flat.<br>Do not overbuy.</h1>
+      <p class="hero-copy">A complete shoppable checklist that removes items already supplied, separates landlord work from tenant purchases, and keeps today to three manageable baskets.</p>
+      <div class="hero-actions">
+        <button class="button primary" id="focusBtn" type="button">Show the 72-hour minimum</button>
+        <a class="button" href="https://deliveroo.co.uk/cuisines/grocery-takeaway" target="_blank" rel="noopener">Open Deliveroo groceries</a>
+        <a class="button" href="https://www.dunelm.com/category/home-and-furniture/bedding" target="_blank" rel="noopener">Open bedding</a>
+      </div>
+      <p class="micro">Public version: exact address, personal records, payment details and source documents are deliberately omitted.</p>
+    </section>
+
+    <section class="stats" aria-label="Checklist summary">
+      <article class="stat"><strong>32</strong><span>72-hour minimum</span></article>
+      <article class="stat"><strong>71</strong><span>All buy-now candidates</span></article>
+      <article class="stat"><strong>16</strong><span>This week</span></article>
+      <article class="stat"><strong>17</strong><span>Already covered</span></article>
+      <article class="stat"><strong>4</strong><span>Agent actions</span></article>
+      <article class="stat"><strong>13</strong><span>Do not buy</span></article>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><p class="kicker">The floor-care decision</p><h2>Keep the Dyson. Add one spray mop.</h2></div></div>
+      <div class="decision">
+        <article class="decision-main">
+          <span class="verdict">Settled</span>
+          <h3>Dyson V12 + refillable microfibre spray mop</h3>
+          <ul>
+            <li><strong>Dyson V12:</strong> routine dry debris, rugs, edges, skirting, furniture and dust.</li>
+            <li><strong>Spray mop:</strong> controlled, low-moisture cleaning of the engineered wood; washable pad rather than disposable Swiffer sheets.</li>
+            <li><strong>Tile rooms:</strong> use the same mop with the appropriate hard-surface bottle/pad, or a separate labelled pad.</li>
+          </ul>
+        </article>
+        <article class="decision-side">
+          <h3>Skip the wet/dry vacuum</h3>
+          <p>It duplicates equipment you already own, adds a dirty-water tank and roller to maintain, and is less useful for rugs, furniture and detailed dry cleaning. Also skip a bucket and second vacuum.</p>
+          <p><strong>Important:</strong> the inventory calls the main flooring “engineered wood” but does not identify whether it is sealed/lacquered or oiled. Confirm the finish before choosing the cleaning formula.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><p class="kicker">Start here</p><h2>Three baskets, then stop.</h2></div><p>This keeps setup from becoming a full-day project. Each basket is a separate 30–45 minute block.</p></div>
+      <div class="focus-grid">
+        <article class="focus-card"><span class="num">1</span><h3>Daily-life consumables</h3><p>Toilet roll, hand wash, bin liners, dish soap, sponges, detergent, dishwasher tablets and the first easy food shop.</p><button class="button" data-filter-action="minimum">Show minimum basket</button></article>
+        <article class="focus-card"><span class="num">2</span><h3>Floor-care pair</h3><p>Your Dyson is covered. Order one refillable wood-floor spray mop, the correct solution and one spare washable pad.</p><button class="button" data-category-action="Floor care">Show floor care</button></article>
+        <article class="focus-card"><span class="num">3</span><h3>Main bed + bathroom</h3><p>Bedroom 1 is king size. Buy only the main-bed protector, sheets and duvet set, plus towels and a bath mat. Defer the guest bed.</p><button class="button" data-search-action="king">Show bedding</button></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><p class="kicker">Recovery guardrails</p><h2>Low-friction, bounded setup</h2></div></div>
+      <div class="guardrails">
+        <article class="guardrail"><strong>One block per day</strong><span>30–45 minutes is enough. A usable flat is the goal, not a finished flat.</span></article>
+        <article class="guardrail"><strong>One daylight safety check</strong><span>Test existing alarms, doors and accessible windows once; repeat only for genuinely new objective evidence.</span></article>
+        <article class="guardrail"><strong>No security expansion</strong><span>No indoor cameras, smart lock, additional locks, security bars or alarm hub.</span></article>
+        <article class="guardrail"><strong>No speculative equipment</strong><span>No dehumidifier, window vac or acoustic hardware unless an actual, sustained problem appears.</span></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><p class="kicker">Inventory-confirmed</p><h2>Already supplied</h2></div><p>These are documented as present, so the checklist marks the corresponding purchase as covered or conditional.</p></div>
+      <div class="provided-grid"><article class="provided-card"><span>Cleaning</span><p>Dyson V12 Detect Slim (user-owned)</p></article><article class="provided-card"><span>Appliances</span><p>NEFF washer/dryer, dishwasher, fridge, freezer, oven, gas hob and extractor</p></article><article class="provided-card"><span>Bedroom 1</span><p>King bed and mattress, two bedside cabinets, clothes rail and full-length mirror</p></article><article class="provided-card"><span>Bedroom 2</span><p>Double bed and mattress, drawers, fitted shelves and shutters</p></article><article class="provided-card"><span>Study</span><p>Desk, chair, cabinet, shelf and waste bin</p></article><article class="provided-card"><span>Hall</span><p>Router, one extension lead, coat hook, shoe rack and thermostat</p></article><article class="provided-card"><span>Utility</span><p>Wall-mounted ironing board and aluminium stepladder</p></article><article class="provided-card"><span>Waste</span><p>Integrated double kitchen bin, two kitchen pedal bins and bathroom/study bins</p></article><article class="provided-card"><span>Safety</span><p>Smoke, carbon-monoxide and heat alarms recorded; test once rather than buying duplicates</p></article></div>
+    </section>
+
+    <section class="section" id="checklist">
+      <div class="section-head"><div><p class="kicker">Full list</p><h2>Shoppable checklist</h2></div><p>Links open retailer searches or official product pages. Stock and rapid delivery remain postcode-dependent.</p></div>
+      <div class="controls-wrap">
+        <div class="tabs" role="tablist" aria-label="Checklist stages">
+          <button class="tab active" data-stage="minimum">72-hour minimum</button>
+          <button class="tab" data-stage="now">Buy now</button>
+          <button class="tab" data-stage="week">This week</button>
+          <button class="tab" data-stage="later">Later / conditional</button>
+          <button class="tab" data-stage="covered">Already covered</button>
+          <button class="tab" data-stage="agent">Agent / landlord</button>
+          <button class="tab" data-stage="skip">Do not buy</button>
+          <button class="tab" data-stage="all">All</button>
+        </div>
+        <div class="filters">
+          <input class="search" id="search" type="search" placeholder="Search items, products or notes…" aria-label="Search checklist">
+          <select class="select" id="category" aria-label="Filter by category"><option value="all">All categories</option></select>
+          <button class="button" id="hideDone" type="button">Hide checked</button>
+        </div>
+        <div class="progress-line"><span id="progressText">0 checked</span><span class="progress-bar"><i id="progressBar"></i></span></div>
+      </div>
+      <div class="list" id="list" aria-live="polite"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><p class="kicker">Not your shopping bill</p><h2>Raise with the agent</h2></div><p>These conditions are documented in the check-in or gas record. Report them rather than buying repair products.</p></div>
+      <div class="agent-grid" id="agentGrid"></div>
+    </section>
+
+    <section class="section sources">
+      <div class="section-head"><div><p class="kicker">How this was refreshed</p><h2>Evidence hierarchy</h2></div></div>
+      <details open><summary>Directly documented</summary><p>The July 2026 inventory was used to remove supplied furniture, appliances, bins, router, extension lead, ironing board, stepladder and other duplicates. Page references appear on individual rows.</p></details>
+      <details><summary>User-reported</summary><p>The Dyson V12 is treated as already owned. That converts the floor-care recommendation from “buy a vacuum” to “add a low-moisture spray mop.”</p></details>
+      <details><summary>Conditional assessments</summary><p>The environmental and acoustic dossiers are desk assessments, not measured surveys. Their dehumidifier, window-vac, rug-underlay and anti-vibration suggestions therefore remain conditional unless direct evidence appears.</p></details>
+      <details><summary>Settled project decisions</summary><p>The 2026 recovery project supersedes the earlier security shopping list: no indoor cameras, additional locks, smart lock, security bars or alarm hub; one daylight security check and the one-check rule afterward.</p></details>
+    </section>
+  </main>
+
+  <footer class="footer"><span>Version 2.0 · refreshed 6 September 2026</span><span>Checklist progress is stored only in this browser.</span></footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
